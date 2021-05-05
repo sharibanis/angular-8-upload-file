@@ -20,7 +20,7 @@ export class UploadFilesComponent implements OnInit {
   constructor(private uploadService: UploadFileService) { }
 
   ngOnInit() {
-    this.fileInfos = this.uploadService.getFiles();
+   // this.fileInfos = this.uploadService.getFiles();
   }
 
   selectFile(event) {
@@ -37,12 +37,14 @@ export class UploadFilesComponent implements OnInit {
           this.progress = Math.round(100 * event.loaded / event.total);
         } else if (event instanceof HttpResponse) {
           this.message = event.body.message;
-          this.fileInfos = this.uploadService.getFiles();
+          //this.fileInfos = this.uploadService.getFiles();
         }
       },
       err => {
         this.progress = 0;
-        this.message = 'Could not upload the file!';
+        this.message = 'Could not upload the file! ' + this.currentFile.name;
+		console.log(err);
+		//this.printError(err);
         this.currentFile = undefined;
       });
 

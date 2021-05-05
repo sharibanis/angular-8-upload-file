@@ -16,7 +16,7 @@ export class UploadFileService {
 
     formData.append('file', file);
 
-    const req = new HttpRequest('POST', `${this.baseUrl}/upload`, formData, {
+    const req = new HttpRequest('POST', `${this.baseUrl}/api/csv/upload`, formData, {
       reportProgress: true,
       responseType: 'json'
     });
@@ -24,7 +24,7 @@ export class UploadFileService {
     return this.http.request(req);
   }
 
-  getFiles(): Observable<any> {
+/*  getFiles(): Observable<any> {
     return this.http.get(`${this.baseUrl}/files`);
-  }
+  }*/
 }
